@@ -16,7 +16,7 @@ module.exports = function(grunt) {
         ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
     lint: {
-      files: ['grunt.js', 'lib/**/*.js', 'test/**/*.js']
+      files: ['src/*.js']
     },
     qunit: {
       files: ['test/**/*.html']
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: [ 'scss/*.scss' ],
-      tasks: [ 'compass:prod', 'lint qunit' ]
+      tasks: [ 'compass:prod', 'lint' ]
     },
     compass: {
       prod: {
@@ -62,7 +62,9 @@ module.exports = function(grunt) {
         eqnull: true,
         browser: true
       },
-      globals: {}
+      globals: {
+        jQuery: true
+      }
     },
     uglify: {}
   });
