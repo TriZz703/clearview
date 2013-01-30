@@ -4,6 +4,10 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: '<json:package.json>',
+	server: {
+		port: '3000',
+		base: './'
+	},
     meta: {
       banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
         '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -30,8 +34,19 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint qunit'
+      files: [ 'scss/*.scss' ],
+      tasks: [ 'compass:prod', 'lint qunit' ]
+    },
+    compass: {
+      prod: {
+        src: 'scss',
+        dest: 'css',
+        outputstyle: 'compressed',
+        linecomments: false,
+        forcecompile: true,
+        debugsass: false,
+        relativeassets: true
+      }
     },
     jshint: {
       options: {
@@ -54,5 +69,11 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', 'lint qunit concat min');
+  
+  //npm tasks
+  grunt.loadNpmTasks( 'grunt-compass' );
+  
+  grunt.registerTask('serve', 'compass:prod lint server watch');
+  
 
 };

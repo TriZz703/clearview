@@ -1,0 +1,10 @@
+{
+  "name": "clearview",
+  "description": "",
+  "author": "Michael Sparks <mike@sparksm.com>",
+  "version": "1.0.200",
+  "devDependencies": {
+    "grunt-compass": "~0.3.7"
+  },
+  "engine": "node >= 0.4.1"
+}
