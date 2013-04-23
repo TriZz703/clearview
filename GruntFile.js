@@ -69,7 +69,7 @@ module.exports = function (grunt) {
 					unescape: true
 				}
 			},
-			dist: ['src/*.js'],
+			dist: ['src/script.js'],
 			grunt: ['GruntFile.js']
 		}
 	});
