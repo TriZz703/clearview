@@ -7,6 +7,8 @@
 
 html,body{
 	overflow: hidden;
+	background: #000;
+	color:#fff;
 }
 
 #page{
@@ -16,4 +18,14 @@ html,body{
 	right:0;
 	bottom:0;
 	left:0;
+}
+
+#gallery{
+	position: fixed;
+	top:40px;
+	right:40px;
+	bottom:40px;
+	left:40px;
+	display: none;
+	background: #fff;
 }
