@@ -1,14 +1,12 @@
-@inlcude 'compass';
-@inlcude 'compass/reset';
-@inlcude 'compass/css3';
+@import 'compass';
+@import 'compass/reset';
+@import 'compass/css3';
 
-@import url(http://fonts.googleapis.com/css?family=Voltaire);
-@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow:700,400);
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700);
 
 html,body{
 	overflow: hidden;
-	background: #000;
-	color:#fff;
+	font-family: 'Noto Sans', sans-serif;
 }
 
 #page{
@@ -20,12 +18,117 @@ html,body{
 	left:0;
 }
 
-#gallery{
-	position: fixed;
-	top:40px;
-	right:40px;
-	bottom:40px;
-	left:40px;
-	display: none;
-	background: #fff;
+#logo{
+	padding:40px;
+	text-align: center;
+	position: relative;
+	background: url('../images/top-back.jpg');
+	@include box-shadow(0 0 10px 0 black);
+}
+
+#nav{
+	text-align: center;
+	ul{
+		margin:0 auto;
+		background: #333;
+		li{
+			list-style: none;
+			cursor: pointer;
+			@include inline-block;
+			&:hover, &.active{
+				background-color: #6081a8;
+				@include filter-gradient(#445e7d, #6081a8, vertical);
+				@include background-image(linear-gradient(top, #445e7d, #6081a8));
+			}
+			a{
+				padding:20px 30px;
+				font-weight: bold;
+				color:#fff;
+				text-decoration: none;
+				@include text-shadow(2px 2px black);
+				@include inline-block;
+			}
+		}
+	}
+}
+
+#content{
+	padding:40px;
+	min-height:50em;
+	text-align: left;
+	position: relative;
+	margin:0 auto;
+/* 	max-width: 60em; */
+	line-height:1.4em;
+	background: #f2f2f2;
+	@include box-shadow(0 -6px 10px -6px black);
+	@include display-box;
+	@include box-align(stretch);
+
+	p{
+		margin:0 0 2em;
+	}
+
+	.placeholder-l{
+		float:left;
+		background:#aaa;
+		height:120px;
+		width:200px;
+		margin:0 1em 1em 0;
+	}
+
+	.placeholder-r{
+		float:right;
+		background:#aaa;
+		height:140px;
+		width:180px;
+		margin:0 0 1em 1em;
+	}
+
+	.left{
+		max-width:15em;
+		min-width:7.4em;
+		margin-right:3em;
+		border-right:1px solid #eee;
+		@include box-shadow(6px 0px 8px -6px #ddd);
+		@include box-flex(1);
+		
+		li{
+			margin:4px 0;
+			position: relative;
+			height:30px;
+			line-height: 30px;
+			padding:0 0 0 10px;
+			cursor: pointer;
+			&:hover, &.active{
+				background-color: #6081a8;
+				color:#fff;
+				@include text-shadow(1px 1px black);
+				&:after{
+					position: absolute;
+					width: 0px;
+					height: 0px;
+					border-style: solid;
+					border-width: 15px 0 15px 20px;
+					border-color: transparent transparent transparent #6081a8;
+					right: -20px;
+					content: "";
+				}
+
+			}
+		}
+		
+	}
+	.right{
+		max-width:44em;
+		@include box-flex(4);
+	}
+}
+
+#footer{
+	background: #333;
+	padding:3em;
+	p{
+		color:#ddd;
+	}
 }
