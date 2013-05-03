@@ -1127,7 +1127,12 @@ $(function() {
 				});
 				image.src = $this.attr('href');
 				$(image).bind('load',function(){
-					$('<img src="'+$this.attr('href')+'" height="420" />').appendTo($this);
+					//$('<img src="'+$this.attr('href')+'" />').appendTo($this);
+					console.log($this.attr('href'));
+					var src = $this.attr('href');
+					$this.css({
+						backgroundImage: 'url(' + src + ')'
+					});
 				});
 				//slideData.push($this.attr('href'));
 			});
@@ -1138,7 +1143,7 @@ $(function() {
 			
 			if ( dir == 'left' ) {
 				$slider.stop().animate({
-					marginLeft : -640
+					marginLeft : -$wrapper.width()
 				}, 300, function(){
 					$slider.css({marginLeft:0}).children(':first').detach().appendTo($slider);
 					bindKeyScroller();
@@ -1146,7 +1151,7 @@ $(function() {
 				});
 			} else if ( dir == 'right' ) {
 				$slider.stop().children(':last').detach().prependTo($slider);
-				$slider.css({marginLeft:-640}).animate({
+				$slider.css({marginLeft:-$wrapper.width()}).animate({
 					marginLeft : 0
 				}, 300, function () {
 					bindKeyScroller();
@@ -1178,11 +1183,15 @@ $(function() {
 		};
 		
 	$slider.css({
-		width : $slider.children('li').length * 640,
+		width : $slider.children('li').length * $wrapper.width(),
 		marginLeft : 0
+	}).children('li').css({
+		width : $wrapper.width()
 	});
 	bindKeyScroller();
 	bindArrowScroller();
 	gatherSlideData();
+
+	$wrapper.focus();
 
 });
